@@ -52,7 +52,7 @@ wea, temperature = get_weather()
 
 # print(res)
 for x in user:
-  print(x.get("user"))
+  print(x)
   user_id=x.get("user_id")
   type=x.get("type")
   if type == 1:
