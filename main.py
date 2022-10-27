@@ -16,7 +16,7 @@ app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 
 user_id = os.environ["USER_ID"]
-template_id = os.environ["TEMPLATE_ID"]
+# template_id = os.environ["TEMPLATE_ID"]
 
 
 def get_weather():
@@ -81,7 +81,7 @@ wea, temperature = get_weather()
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"one":{"value":one},"words":{"value":get_words(), "color":get_random_color()}}
 
 json = [{"user_id": "o1nwI6OYWRZcKKG-Cdt3iS6n2HkE", "type": 1, "birthday_left": {"month": 7, "day": 24},
-         "birthday_right": {"month": 1, "day": 1}},
+         "birthday_right": {"month": 1, "day": 1}, "template_id": "XARFtKHsBJoMnvfKvDD55LH-u1M-c1BRvoqc7N0K-5E"}
         ]
 
 for x in json:
@@ -98,6 +98,8 @@ for x in json:
     birthday_right = get_birthday(month, day)
     # 农历-今天
     today = get_zhDate();
+    # 模板id
+    template_id = x.get("template_id")
     data = None
     love = None
     if type == 1:
