@@ -10,12 +10,13 @@ from zhdate import ZhDate
 
 today = datetime.now()
 # start_date = os.environ['START_DATE']
-city = os.environ['CITY']
+city = "湘潭"
 
-app_id = os.environ["APP_ID"]
-app_secret = os.environ["APP_SECRET"]
+app_id = "wx7bb34aa80052a474"
+app_secret = "dccd85b03daa8e45c72a5c92ad6e92dc"
 
-user_id = os.environ["USER_ID"]
+
+# user_id = os.environ["USER_ID"]
 # template_id = os.environ["TEMPLATE_ID"]
 
 
@@ -45,7 +46,6 @@ def get_birthday(month, day):
     oneDay = ZhDate(year, month, day);
     # 将当前农历生日日期转公历计算
     birthday = oneDay.to_datetime();
-    today = datetime.now()
     difference = birthday.toordinal() - today.toordinal()
     if difference < 0:
         year = year + 1
@@ -59,8 +59,7 @@ def get_birthday(month, day):
 
 # 获取当前农历日期
 def get_zhDate():
-    date = datetime.now()
-    zhdate = ZhDate.from_datetime(date)
+    zhdate = ZhDate.from_datetime(today)
     return zhdate
 
 
@@ -97,16 +96,17 @@ for x in json:
     day = x.get("birthday_right").get("day")
     birthday_right = get_birthday(month, day)
     # 农历-今天
-    today = get_zhDate();
+    zhToday = get_zhDate();
     # 模板id
     template_id = x.get("template_id")
     data = None
     love = None
     if type == 1:
         # 特殊版
-        love = "这是我追你的第 " + get_count("2022-08-16") + " 天 "
+        love_day = get_count("2022-08-16")
+        love = "这是我追你的第 " + love_day + " 天 "
         # love = "我们已经相恋 " + get_count("2022-08-16") + " 天啦 "
-        data = {"today": {"value": today}, "weather": {"value": wea}, "temperature": {"value": temperature},
+        data = {"today": {"value": zhToday}, "weather": {"value": wea}, "temperature": {"value": temperature},
                 "love_days": {"value": love},
                 "birthday_left": {"value": birthday_left}, "birthday_right": {"value": birthday_right},
                 "words": {"value": get_words(), "color": get_random_color()}}
@@ -114,7 +114,7 @@ for x in json:
     else:
         # 普通版
         one = "备用备用"
-        data = {"today": {"value": today}, "weather": {"value": wea}, "temperature": {"value": temperature},
+        data = {"today": {"value": zhToday}, "weather": {"value": wea}, "temperature": {"value": temperature},
                 "birthday_left": {"value": get_birthday()}, "birthday_right": {"value": birthday_right},
                 "words": {"value": get_words(), "color": get_random_color()}}
         print("222222")
