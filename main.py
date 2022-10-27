@@ -40,12 +40,15 @@ def get_words():
     return get_words()
   return words.json()['data']['text']
 
+
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
 
 client = WeChatClient(app_id, app_secret)
-print("对象json："+user)
+print("对象json：" + user)
+print("对象app_secret：" + app_secret)
+print("today：" + today)
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"one":{"value":one},"words":{"value":get_words(), "color":get_random_color()}}
@@ -53,8 +56,8 @@ wea, temperature = get_weather()
 # print(res)
 for x in user:
   print(x)
-  user_id=x.get("user_id")
-  type=x.get("type")
+  user_id = x.get("user_id")
+  type = x.get("type")
   if type == 1:
     one=None
     data = {"weather": {"value": wea}, "temperature": {"value": temperature}, "love_days": {"value": get_count()},
