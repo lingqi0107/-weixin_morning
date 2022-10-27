@@ -46,14 +46,11 @@ def get_random_color():
 
 
 client = WeChatClient(app_id, app_secret)
-
-print("对象app_secret：" + app_secret)
-print("today：" + today)
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"one":{"value":one},"words":{"value":get_words(), "color":get_random_color()}}
 
-json = [{"user_id": "o1nwI6OYWRZcKKG-Cdt3iS6n2HkE", "type": 1}]
+json = [{"user_id": "o1nwI6OYWRZcKKG-Cdt3iS6n2HkE", "type": 1}, {"user_id": "o1nwI6OYWRZcKKG-Cdt3iS6n2HkE", "type": 2}]
 
 for x in json:
   print(x)
