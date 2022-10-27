@@ -14,7 +14,7 @@ birthday = os.environ['BIRTHDAY']
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 
-user = os.environ["USER"]
+user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
 
@@ -46,20 +46,21 @@ def get_random_color():
 
 
 client = WeChatClient(app_id, app_secret)
-print("对象json：" + user)
+
 print("对象app_secret：" + app_secret)
 print("today：" + today)
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"one":{"value":one},"words":{"value":get_words(), "color":get_random_color()}}
 
-# print(res)
-for x in user:
+json = [{"user_id": "o1nwI6OYWRZcKKG-Cdt3iS6n2HkE", "type": 1}]
+
+for x in json:
   print(x)
   user_id = x.get("user_id")
   type = x.get("type")
   if type == 1:
-    one=None
+    one = None
     data = {"weather": {"value": wea}, "temperature": {"value": temperature}, "love_days": {"value": get_count()},
             "birthday_left": {"value": get_birthday()}, "one": {"value": one},
             "words": {"value": get_words(), "color": get_random_color()}}
