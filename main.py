@@ -99,7 +99,7 @@ for x in json:
     birthday_right = get_birthday(month, day)
     # 农历-今天
     zhToday = get_zhDate();
-    calendar2 = json.dumps(today, cls=MyEncoder)
+    calendar2 = "今天是：" + zhToday
     print(calendar2)
     # 模板id
     template_id = x.get("template_id")
