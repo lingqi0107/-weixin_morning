@@ -7,6 +7,8 @@ import os
 import random
 
 from zhdate import ZhDate
+import json
+from MyEncoder import MyEncoder
 
 today = datetime.now()
 # start_date = os.environ['START_DATE']
@@ -97,7 +99,8 @@ for x in json:
     birthday_right = get_birthday(month, day)
     # 农历-今天
     zhToday = get_zhDate();
-    print(zhToday)
+    calendar2 = json.dumps(today, cls=MyEncoder)
+    print(calendar2)
     # 模板id
     template_id = x.get("template_id")
     data = None
@@ -107,7 +110,7 @@ for x in json:
         love_day = get_count("2022-08-16")
         love = "这是我追你的第 " + str(love_day) + " 天 "
         # love = "我们已经相恋 " + get_count("2022-08-16") + " 天啦 "
-        data = {"today": {"value": zhToday}, "weather": {"value": wea}, "temperature": {"value": temperature},
+        data = {"today": {"value": calendar2}, "weather": {"value": wea}, "temperature": {"value": temperature},
                 "love_days": {"value": love},
                 "birthday_left": {"value": birthday_left}, "birthday_right": {"value": birthday_right},
                 "words": {"value": get_words(), "color": get_random_color()}}
@@ -116,7 +119,7 @@ for x in json:
     else:
         # 普通版
         one = "备用备用"
-        data = {"today": {"value": zhToday}, "weather": {"value": wea}, "temperature": {"value": temperature},
+        data = {"today": {"value": calendar2}, "weather": {"value": wea}, "temperature": {"value": temperature},
                 "birthday_left": {"value": get_birthday()}, "birthday_right": {"value": birthday_right},
                 "words": {"value": get_words(), "color": get_random_color()}}
         print("222222")
