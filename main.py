@@ -7,8 +7,6 @@ import os
 import random
 
 from zhdate import ZhDate
-import json
-from MyEncoder import MyEncoder
 
 today = datetime.now()
 # start_date = os.environ['START_DATE']
