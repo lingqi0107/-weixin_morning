@@ -97,6 +97,7 @@ for x in json:
     birthday_right = get_birthday(month, day)
     # 农历-今天
     zhToday = get_zhDate();
+    print(zhToday)
     # 模板id
     template_id = x.get("template_id")
     data = None
@@ -118,4 +119,5 @@ for x in json:
                 "birthday_left": {"value": get_birthday()}, "birthday_right": {"value": birthday_right},
                 "words": {"value": get_words(), "color": get_random_color()}}
         print("222222")
+    print("最后的模板是：" + data)
     res = wm.send_template(user_id, template_id, data)
