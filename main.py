@@ -112,6 +112,7 @@ for x in json:
                 "birthday_left": {"value": birthday_left}, "birthday_right": {"value": birthday_right},
                 "words": {"value": get_words(), "color": get_random_color()}}
         print("1111111111")
+        res = wm.send_template(user_id, template_id, data)
     else:
         # 普通版
         one = "备用备用"
@@ -119,5 +120,4 @@ for x in json:
                 "birthday_left": {"value": get_birthday()}, "birthday_right": {"value": birthday_right},
                 "words": {"value": get_words(), "color": get_random_color()}}
         print("222222")
-    print("最后的模板是：" + data)
-    res = wm.send_template(user_id, template_id, data)
+        res = wm.send_template(user_id, template_id, data)
