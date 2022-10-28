@@ -104,7 +104,7 @@ for x in json:
     if type == 1:
         # 特殊版
         love_day = get_count("2022-08-16")
-        love = "这是我追你的第 " + love_day + " 天 "
+        love = "这是我追你的第 " + str(love_day) + " 天 "
         # love = "我们已经相恋 " + get_count("2022-08-16") + " 天啦 "
         data = {"today": {"value": zhToday}, "weather": {"value": wea}, "temperature": {"value": temperature},
                 "love_days": {"value": love},
