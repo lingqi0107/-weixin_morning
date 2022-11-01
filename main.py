@@ -10,7 +10,7 @@ from zhdate import ZhDate
 
 today = datetime.now()
 # start_date = os.environ['START_DATE']
-city = "湘潭"
+# city = "湘潭"
 
 app_id = "wx7bb34aa80052a474"
 app_secret = "dccd85b03daa8e45c72a5c92ad6e92dc"
@@ -20,7 +20,7 @@ app_secret = "dccd85b03daa8e45c72a5c92ad6e92dc"
 # template_id = os.environ["TEMPLATE_ID"]
 
 
-def get_weather():
+def get_weather(city):
     url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
     res = requests.get(url).json()
     weather = res['data']['list'][0]
@@ -74,17 +74,19 @@ def get_random_color():
     return "#%06x" % random.randint(0, 0xFFFFFF)
 
 
-client = WeChatClient(app_id, app_secret)
-wm = WeChatMessage(client)
-wea, temperature = get_weather()
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"one":{"value":one},"words":{"value":get_words(), "color":get_random_color()}}
 
 json = [{"user_id": "o1nwI6OYWRZcKKG-Cdt3iS6n2HkE", "type": 1, "birthday_left": {"month": 7, "day": 24},
          "birthday_right": {"month": 1, "day": 7}, "template_id": "81MVfBE2sO6T0iPh8Dl4KLVfQl85gSRwoPOF0_5b0f0",
-         "know": "2022-08-16"}]
+         "know": "2022-08-16", "city": "长沙"}]
+
+client = WeChatClient(app_id, app_secret)
+wm = WeChatMessage(client)
 
 for x in json:
-    print(x)
+    city = x.get("city")
+    wea, temperature = get_weather(city)
+
     user_id = x.get("user_id")
     type = x.get("type")
     # 你的生日
@@ -111,8 +113,8 @@ for x in json:
     else:
         love = "这是我们认识的第 " + str(love_day) + " 天 "
 
-    data = {"today": {"value": today2}, "weather": {"value": wea}, "temperature": {"value": temperature},
-            "love_days": {"value": love},
+    data = {"today": {"value": today2}, "city": {"value": city}, "weather": {"value": wea},
+            "temperature": {"value": temperature}, "love_days": {"value": love},
             "birthday_left": {"value": birthday_left}, "birthday_right": {"value": birthday_right},
             "words": {"value": get_words(), "color": get_random_color()}}
     print("1111111111")
