@@ -80,8 +80,8 @@ wea, temperature = get_weather()
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"one":{"value":one},"words":{"value":get_words(), "color":get_random_color()}}
 
 json = [{"user_id": "o1nwI6OYWRZcKKG-Cdt3iS6n2HkE", "type": 1, "birthday_left": {"month": 7, "day": 24},
-         "birthday_right": {"month": 1, "day": 1}, "template_id": "XARFtKHsBJoMnvfKvDD55LH-u1M-c1BRvoqc7N0K-5E"}
-        ]
+         "birthday_right": {"month": 1, "day": 7}, "template_id": "81MVfBE2sO6T0iPh8Dl4KLVfQl85gSRwoPOF0_5b0f0",
+         "know": "2022-08-16"}]
 
 for x in json:
     print(x)
@@ -97,28 +97,23 @@ for x in json:
     birthday_right = get_birthday(month, day)
     # 农历-今天
     zhToday = get_zhDate();
-    calendar2 = ('今天是：%s' % (zhToday))
-    print(calendar2)
+    today2 = ('今天是：%s' % (zhToday))
+    print(today2)
     # 模板id
     template_id = x.get("template_id")
+    # 相识日期 // 相恋日期
+    know = x.get("know")
+    love_day = get_count(know)
     data = None
     love = None
     if type == 1:
-        # 特殊版
-        love_day = get_count("2022-08-16")
         love = "这是我追你的第 " + str(love_day) + " 天 "
-        # love = "我们已经相恋 " + get_count("2022-08-16") + " 天啦 "
-        data = {"today": {"value": calendar2}, "weather": {"value": wea}, "temperature": {"value": temperature},
-                "love_days": {"value": love},
-                "birthday_left": {"value": birthday_left}, "birthday_right": {"value": birthday_right},
-                "words": {"value": get_words(), "color": get_random_color()}}
-        print("1111111111")
-        res = wm.send_template(user_id, template_id, data)
     else:
-        # 普通版
-        one = "备用备用"
-        data = {"today": {"value": calendar2}, "weather": {"value": wea}, "temperature": {"value": temperature},
-                "birthday_left": {"value": get_birthday()}, "birthday_right": {"value": birthday_right},
-                "words": {"value": get_words(), "color": get_random_color()}}
-        print("222222")
-        res = wm.send_template(user_id, template_id, data)
+        love = "这是我们认识的第 " + str(love_day) + " 天 "
+
+    data = {"today": {"value": today2}, "weather": {"value": wea}, "temperature": {"value": temperature},
+            "love_days": {"value": love},
+            "birthday_left": {"value": birthday_left}, "birthday_right": {"value": birthday_right},
+            "words": {"value": get_words(), "color": get_random_color()}}
+    print("1111111111")
+    res = wm.send_template(user_id, template_id, data)
