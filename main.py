@@ -77,7 +77,7 @@ def get_random_color():
 # data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"one":{"value":one},"words":{"value":get_words(), "color":get_random_color()}}
 
 json = [{"user_id": "o1nwI6OYWRZcKKG-Cdt3iS6n2HkE", "type": 1, "birthday_left": {"month": 7, "day": 24},
-         "birthday_right": {"month": 1, "day": 7}, "template_id": "81MVfBE2sO6T0iPh8Dl4KLVfQl85gSRwoPOF0_5b0f0",
+         "birthday_right": {"month": 1, "day": 7}, "template_id": "zykjLd1EuijeZtiFOhjGf8zxvMvE22PBRgPZPUwqloI",
          "know": "2022-08-16", "city": "长沙"}]
 
 client = WeChatClient(app_id, app_secret)
