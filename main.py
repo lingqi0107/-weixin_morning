@@ -82,9 +82,9 @@ json = [
      "birthday_right": {"month": 1, "day": 7}, "template_id": "zykjLd1EuijeZtiFOhjGf8zxvMvE22PBRgPZPUwqloI",
      "know": "2022-08-16", "city": "长沙"},
     # 包贝
-    # {"user_id": "o1nwI6MTh3AlPIEQWNItZyV8BG6M", "type": 1, "birthday_left": {"month": 1, "day": 7},
-    #  "birthday_right": {"month": 7, "day": 24}, "template_id": "zykjLd1EuijeZtiFOhjGf8zxvMvE22PBRgPZPUwqloI",
-    #  "know": "2022-08-16", "city": "湘潭"}
+    {"user_id": "o1nwI6MTh3AlPIEQWNItZyV8BG6M", "type": 1, "birthday_left": {"month": 1, "day": 7},
+     "birthday_right": {"month": 7, "day": 24}, "template_id": "zykjLd1EuijeZtiFOhjGf8zxvMvE22PBRgPZPUwqloI",
+     "know": "2022-08-16", "city": "湘潭"}
 ]
 
 client = WeChatClient(app_id, app_secret)
