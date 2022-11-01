@@ -118,7 +118,7 @@ for x in json:
     if type == 1:
         love = "这是我追你的第 " + str(love_day) + " 天 "
     elif type == 2:
-        love = "这是考验他的第 " + str(love_day) + " 天 "
+        love = "这是尝试接受他的第 " + str(love_day) + " 天 "
 
     data = {"today": {"value": today2}, "city": {"value": city}, "weather": {"value": wea},
             "temperature": {"value": temperature}, "love_days": {"value": love},
