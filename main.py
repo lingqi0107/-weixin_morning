@@ -144,6 +144,8 @@ for x in json:
     # 相识日期 // 相恋日期
     know = x.get("know")
     love_day = get_count(know)
+    # 沙雕文案
+    words = get_words()
     data = None
     love = None
     if type == 1:
@@ -152,6 +154,6 @@ for x in json:
     data = {"today": {"value": today2}, "city": {"value": city}, "weather": {"value": wea},
             "temperature": {"value": temperature}, "love_days": {"value": love},
             "birthday_left": {"value": birthday_left}, "birthday_right": {"value": birthday_right},
-            "words": {"value": get_words(), "color": get_random_color()}}
+            "words": {"value": words, "color": get_random_color()}}
     print("1111111111")
     res = wm.send_template(user_id, template_id, data)
