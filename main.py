@@ -20,6 +20,33 @@ app_secret = "dccd85b03daa8e45c72a5c92ad6e92dc"
 # user_id = os.environ["USER_ID"]
 # template_id = os.environ["TEMPLATE_ID"]
 
+# 获取东八区时间
+def nowDay():
+    # 当前服务器时间
+    aa = datetime.now()
+    print('当前服务器时间===：%s' % (aa))
+    # 北京时间
+    utc = pytz.utc
+    beijing = pytz.timezone("Asia/Shanghai")
+    # 时间戳
+    loc_timestamp = time.time()
+    # 转utc时间 datetime.datetime 类型
+    utc_date = datetime.utcfromtimestamp(loc_timestamp)
+    # 转utc当地 标识的时间
+    utc_loc_time = utc.localize(utc_date)
+    fmt = '%Y-%m-%d %H:%M:%S'
+    # 转北京时间
+    beijing_time = utc_loc_time.astimezone(beijing)
+    # utc 时间
+    utc_time = beijing_time
+    # cst时间
+    cst_time = beijing_time.strftime(fmt)
+    # 转datetime时间
+    today = datetime.strptime(cst_time, "%Y-%m-%d %H:%M:%S")
+
+    print('现在时间===：%s' % (today))
+    return today
+
 
 def get_weather(city):
     url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
@@ -72,34 +99,6 @@ def get_words():
     if words.status_code != 200:
         return get_words()
     return words.json()['data']['text']
-
-
-# 获取东八区时间
-def nowDay():
-    # 当前服务器时间
-    aa = datetime.now()
-    print('当前服务器时间===：%s' % (aa))
-    # 北京时间
-    utc = pytz.utc
-    beijing = pytz.timezone("Asia/Shanghai")
-    # 时间戳
-    loc_timestamp = time.time()
-    # 转utc时间 datetime.datetime 类型
-    utc_date = datetime.utcfromtimestamp(loc_timestamp)
-    # 转utc当地 标识的时间
-    utc_loc_time = utc.localize(utc_date)
-    fmt = '%Y-%m-%d %H:%M:%S'
-    # 转北京时间
-    beijing_time = utc_loc_time.astimezone(beijing)
-    # utc 时间
-    utc_time = beijing_time
-    # cst时间
-    cst_time = beijing_time.strftime(fmt)
-    # 转datetime时间
-    today = datetime.strptime(cst_time, "%Y-%m-%d %H:%M:%S")
-
-    print("today===" + today)
-    return today
 
 
 def get_random_color():
