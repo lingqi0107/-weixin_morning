@@ -115,11 +115,13 @@ json = [
     # 包贝
     {"user_id": "o1nwI6MTh3AlPIEQWNItZyV8BG6M", "type": 1, "birthday_left": {"month": 1, "day": 7},
      "birthday_right": {"month": 7, "day": 24}, "template_id": "zykjLd1EuijeZtiFOhjGf8zxvMvE22PBRgPZPUwqloI",
-     "know": "2022-08-16", "city": "湘潭"}
+     "know": "2022-08-16", "city": "岳阳"}
 ]
 
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
+# 沙雕文案
+words = get_words()
 
 for x in json:
     city = x.get("city")
@@ -144,12 +146,11 @@ for x in json:
     # 相识日期 // 相恋日期
     know = x.get("know")
     love_day = get_count(know)
-    # 沙雕文案
-    words = get_words()
+    
     data = None
     love = None
     if type == 1:
-        love = "距离第一次去江边已有 " + str(love_day) + " 天 "
+        love = "喜欢你喜欢你喜欢你 " + str(love_day) + " 天 "
 
     data = {"today": {"value": today2}, "city": {"value": city}, "weather": {"value": wea},
             "temperature": {"value": temperature}, "love_days": {"value": love},
