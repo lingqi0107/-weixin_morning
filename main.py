@@ -150,7 +150,7 @@ for x in json:
     data = None
     love = None
     if type == 1:
-        love = "喜欢你喜欢你喜欢你 " + str(love_day) + " 天 "
+        love = "我很喜欢你呀❤：" + str(love_day) + " 天 "
 
     data = {"today": {"value": today2}, "city": {"value": city}, "weather": {"value": wea},
             "temperature": {"value": temperature}, "love_days": {"value": love},
